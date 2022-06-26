@@ -63,7 +63,7 @@ while True:
     cv2.imshow("workplace", workplace)
     dice = workplace[arrayX*70:arrayX*70+70, arrayY*70:arrayY*70+70]
     cv2.imshow("nextItem", nextItem)
-    cv2.imwrite('./dice' + str(arrayX) + str(arrayY) + '.jpg', dice)
+    cv2.imwrite('./temp2/dice' + str(arrayX) + str(arrayY) + '.jpg', dice)
     cv2.imwrite('./nextItem.jpg', nextItem)
     if(arrayX >= 5):
         arrayX = 0
