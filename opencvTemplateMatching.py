@@ -15,22 +15,19 @@ number = 1
 
 for item in items:
     print(item)
-    for number in range(1,14):
-        img1 = cv2.imread('./item/' + item + '/' + item + '00.jpg',0)
-        img2 = cv2.imread('./item/' + item + '/' + item + f"{number:02d}" + '.jpg',0)
-        h, w = img2.shape
-        if(h == 65):
-            for method in methods:
-                imgcompare = img1.copy()
-                result = cv2.matchTemplate(imgcompare, img2, method)
-                if (method == cv2.TM_CCOEFF_NORMED):
-                    print('TM_CCOEFF_NORMED')
-                elif (method == cv2.TM_CCORR_NORMED):
-                    print('TM_CCORR_NORMED')
-                elif (method == cv2.TM_SQDIFF_NORMED):
-                    print('TM_SQDIFF_NORMED')
-                print(result)
-        else:
-            print(item + f"{number:02d}")
+    for method in methods:
+        if (method == cv2.TM_CCOEFF_NORMED):
+            print('TM_CCOEFF_NORMED')
+        elif (method == cv2.TM_CCORR_NORMED):
+            print('TM_CCORR_NORMED')
+        elif (method == cv2.TM_SQDIFF_NORMED):
+            print('TM_SQDIFF_NORMED')
+        for number in range(1,14):
+            img1 = cv2.imread('./item/' + item + '/' + item + '00.jpg',0)
+            img2 = cv2.imread('./item/' + item + '/' + item + f"{number:02d}" + '.jpg',0)
+            h, w = img2.shape
+            imgcompare = img1.copy()
+            result = cv2.matchTemplate(imgcompare, img2, method)
+            print(result)
 
-print(type(result[0][0]))
+# print(type(result[0][0]))
