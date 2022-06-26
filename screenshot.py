@@ -50,21 +50,23 @@ while True:
     try :
         left, top, right, bottom = win32gui.GetWindowRect(hwnd)
     except :
-        print("找不到視窗")
+        print("can't find the window")
         break
     img = ImageGrab.grab(bbox = (left, top, right+66, bottom+50))
     img_np = np.array(img)
     nextItem = img_np[125:180, 5:64]
     workplace = img_np[295:295+itemSize*6, 25:25+itemSize*6]
-    workplace = cv2.rectangle(workplace, (arrayX*itemSize,arrayY*itemSize), 
-        (arrayX*itemSize+itemSize,arrayY*itemSize+itemSize), (0,0,255), 3)
+    # workplace = cv2.rectangle(workplace, (arrayX*itemSize,arrayY*itemSize), 
+    #     (arrayX*itemSize+itemSize,arrayY*itemSize+itemSize), (0,0,255), 3)
     frame = cv2.cvtColor(img_np, cv2.COLOR_BGR2GRAY)
     cv2.imshow("tripletown", img_np)
     cv2.imshow("workplace", workplace)
-    dice = workplace[arrayX*70:arrayX*70+70, arrayY*70:arrayY*70+70]
-    cv2.imshow("nextItem", nextItem)
-    cv2.imwrite('./temp2/dice' + str(arrayX) + str(arrayY) + '.jpg', dice)
-    cv2.imwrite('./nextItem.jpg', nextItem)
+    dice = workplace[arrayX*itemSize:arrayX*itemSize+itemSize,
+     arrayY*itemSize:arrayY*itemSize+itemSize]
+    # cv2.imshow("nextItem", nextItem)
+    cv2.imwrite('./temp6/dice' + str(arrayX) + str(arrayY) + '.jpg', dice)
+    cv2.imwrite('./temp6/nextItem.jpg', nextItem)
+    cv2.imwrite('./temp6/workplace.jpg', workplace)
     if(arrayX >= 5):
         arrayX = 0
         arrayY = arrayY + 1
@@ -72,6 +74,7 @@ while True:
             arrayY = 0
     else:
         arrayX = arrayX + 1
+    
     cv2.setMouseCallback('tripletown',click_event)
     k = cv2.waitKey(500)&0xFF #64bits! need a mask
     if k ==27:
