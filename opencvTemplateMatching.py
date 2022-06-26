@@ -26,19 +26,19 @@ for item in items:
     print(item)
     for method in methods:
         if (method == cv2.TM_CCOEFF_NORMED):
-            print('TM_CCOEFF_NORMED')
+            # print('TM_CCOEFF_NORMED')
             useMethod = 'TM_CCOEFF_NORMED'
         elif (method == cv2.TM_CCORR_NORMED):
-            print('TM_CCORR_NORMED')
+            # print('TM_CCORR_NORMED')
             useMethod = 'TM_CCORR_NORMED'
         elif (method == cv2.TM_SQDIFF_NORMED):
-            print('TM_SQDIFF_NORMED')
+            # print('TM_SQDIFF_NORMED')
             useMethod = 'TM_SQDIFF_NORMED'
         for number in range(1,14):
             img1 = cv2.imread('./item/' + item + '/' + item + '00.jpg',0)
             img2 = cv2.imread('./item/' + item + '/' + item + f"{number:02d}" + '.jpg',0)
             result = cv2.matchTemplate(img1, img2, method)
-            print(result)
+            # print(result)
             data = [useMethod, item, float(result)]
             writer.writerow(data)
 
