@@ -64,9 +64,9 @@ while True:
     dice = workplace[arrayX*itemSize:arrayX*itemSize+itemSize,
      arrayY*itemSize:arrayY*itemSize+itemSize]
     # cv2.imshow("nextItem", nextItem)
-    cv2.imwrite('./temp/dice' + str(arrayX) + str(arrayY) + '.jpg', dice)
-    cv2.imwrite('./temp/nextItem.jpg', nextItem)
-    cv2.imwrite('./temp/workplace.jpg', workplace)
+    cv2.imwrite('./temp1/dice' + str(arrayX) + str(arrayY) + '.jpg', dice)
+    cv2.imwrite('./temp1/nextItem.jpg', nextItem)
+    cv2.imwrite('./temp1/workplace.jpg', workplace)
     if(arrayX >= 5):
         arrayX = 0
         arrayY = arrayY + 1
