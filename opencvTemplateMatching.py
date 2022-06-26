@@ -25,9 +25,7 @@ for item in items:
         for number in range(1,14):
             img1 = cv2.imread('./item/' + item + '/' + item + '00.jpg',0)
             img2 = cv2.imread('./item/' + item + '/' + item + f"{number:02d}" + '.jpg',0)
-            h, w = img2.shape
-            imgcompare = img1.copy()
-            result = cv2.matchTemplate(imgcompare, img2, method)
+            result = cv2.matchTemplate(img1, img2, method)
             print(result)
 
 # print(type(result[0][0]))
