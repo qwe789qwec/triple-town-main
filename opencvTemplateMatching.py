@@ -3,8 +3,8 @@ import cv2
 import csv
 import os
 
-header = ['method', 'item', 'score']
-f = open('compare.csv', 'w', encoding='UTF8', newline='')
+header = ['method', 'item1', 'item2', 'score']
+f = open('failCompare.csv', 'w', encoding='UTF8', newline='')
 writer = csv.writer(f)
 # write the header
 writer.writerow(header)
@@ -19,7 +19,7 @@ items = ['empty', 'grass', 'bush', 'tree', 'hut', 'house', 'mansion',
 #             cv2.TM_CCORR_NORMED, cv2.TM_SQDIFF, cv2.TM_SQDIFF_NORMED]
 # methods = [cv2.TM_CCOEFF_NORMED, cv2.TM_CCORR_NORMED, cv2.TM_SQDIFF_NORMED]
 methods = [cv2.TM_CCOEFF_NORMED, cv2.TM_CCORR_NORMED, cv2.TM_SQDIFF_NORMED]
-number = 1
+lestItem = '0'
 
 for item in items:
     # print(item)
@@ -35,22 +35,25 @@ for item in items:
             useMethod = 'TM_SQDIFF_NORMED'
         number = 2
         # img2Name = './item/' + item + '/' + item + f"{number:02d}" + '.jpg'
-        img2Name = './item/' + item + '/' + item + str(number) + '.jpg'
-        file_exists = os.path.exists(img2Name)
-        while file_exists:
-            img1 = cv2.imread('./item/' + item + '/' + item + '1.jpg',0)
+        img1Name = './item/' + item + '/' + item + '1.jpg'
+        img2Name = './item/' + lestItem + '/' + lestItem + str(number) + '.jpg'
+        img1_exists = os.path.exists(img1Name)
+        img2_exists = os.path.exists(img2Name)
+        while img1_exists and img2_exists:
+            img1 = cv2.imread(img1Name,0)
             img2 = cv2.imread(img2Name,0)
             result = cv2.matchTemplate(img1, img2, method)
             h, w = img2.shape
             if h == 65:
                 # print(result)
-                data = [useMethod, item, float(result*100)]
+                data = [useMethod, item, lestItem, float(result*100)]
                 writer.writerow(data)
             else:
                 print(img2Name)
             number = number + 1
-            img2Name = './item/' + item + '/' + item + str(number) + '.jpg'
-            file_exists = os.path.exists(img2Name)
+            img2Name = './item/' + lestItem + '/' + lestItem + str(number) + '.jpg'
+            img2_exists = os.path.exists(img2Name)
+    lestItem = item
 
 f.close()
 # print(type(result[0][0]))
