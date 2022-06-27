@@ -13,8 +13,7 @@ writer.writerow(header)
 
 items = ['empty', 'grass', 'bush', 'tree', 'hut', 'house', 'mansion',
  'castle', 'floatingMansion', 'tripleCastle', 'ninjaBear', 'bear', 'Church',
- 'Cathedral', 'treasure', 'bigTreasure', 'bot', 'rock', 'bigRock', 'empty',
- 'tripleCastle']
+ 'Cathedral', 'treasure', 'bigTreasure', 'bot', 'rock', 'bigRock', 'tripleCastle']
 
 # methods = [cv2.TM_CCOEFF, cv2.TM_CCOEFF_NORMED, cv2.TM_CCORR,
 #             cv2.TM_CCORR_NORMED, cv2.TM_SQDIFF, cv2.TM_SQDIFF_NORMED]
@@ -45,7 +44,7 @@ for item in items:
             h, w = img2.shape
             if h == 65:
                 # print(result)
-                data = [useMethod, item, float(result)]
+                data = [useMethod, item, float(result*100)]
                 writer.writerow(data)
             else:
                 print(img2Name)
