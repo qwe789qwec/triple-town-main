@@ -13,8 +13,8 @@ writer.writerow(header)
 
 items = ['empty', 'grass', 'bush', 'tree', 'hut', 'house', 'mansion',
  'castle', 'floatingMansion', 'tripleCastle', 'ninjaBear', 'bear', 'Church',
- 'Cathedral', 'treasureChest', 'bigTreasureChest', 'bot', 'rock', 'bigRock',
- 'empty', 'tripleCastle']
+ 'Cathedral', 'treasure', 'bigTreasure', 'bot', 'rock', 'bigRock', 'empty',
+ 'tripleCastle']
 
 # methods = [cv2.TM_CCOEFF, cv2.TM_CCOEFF_NORMED, cv2.TM_CCORR,
 #             cv2.TM_CCORR_NORMED, cv2.TM_SQDIFF, cv2.TM_SQDIFF_NORMED]
@@ -35,10 +35,11 @@ for item in items:
             # print('TM_SQDIFF_NORMED')
             useMethod = 'TM_SQDIFF_NORMED'
         number = 2
-        img2Name = './item/' + item + '/' + item + f"{number:02d}" + '.jpg'
+        # img2Name = './item/' + item + '/' + item + f"{number:02d}" + '.jpg'
+        img2Name = './item/' + item + '/' + item + str(number) + '.jpg'
         file_exists = os.path.exists(img2Name)
         while file_exists:
-            img1 = cv2.imread('./item/' + item + '/' + item + '01.jpg',0)
+            img1 = cv2.imread('./item/' + item + '/' + item + '1.jpg',0)
             img2 = cv2.imread(img2Name,0)
             result = cv2.matchTemplate(img1, img2, method)
             h, w = img2.shape
@@ -49,7 +50,7 @@ for item in items:
             else:
                 print(img2Name)
             number = number + 1
-            img2Name = './item/' + item + '/' + item + f"{number:02d}" + '.jpg'
+            img2Name = './item/' + item + '/' + item + str(number) + '.jpg'
             file_exists = os.path.exists(img2Name)
 
 f.close()
