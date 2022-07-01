@@ -4,16 +4,19 @@ import csv
 import os
 
 header = ['method', 'item1', 'item2', 'score']
-f = open('failCompare.csv', 'w', encoding='UTF8', newline='')
+f = open('compare.csv', 'w', encoding='UTF8', newline='')
 writer = csv.writer(f)
 # write the header
 writer.writerow(header)
 # # write multiple rows
 # writer.writerows(data)
 
-items = ['empty', 'grass', 'bush', 'tree', 'hut', 'house', 'mansion',
- 'castle', 'floatingMansion', 'tripleCastle', 'ninjaBear', 'bear', 'Church',
- 'Cathedral', 'treasure', 'bigTreasure', 'bot', 'rock', 'bigRock', 'tripleCastle']
+# items = ['empty', 'grass', 'bush', 'tree', 'hut', 'house', 'mansion',
+#  'castle', 'floatingMansion', 'tripleCastle', 'ninjaBear', 'bear', 'Church',
+#  'Cathedral', 'treasure', 'bigTreasure', 'bot', 'rock', 'bigRock', 'tripleCastle']
+
+items = ['empty', 'grass', 'bush', 'tree', 'hut', 'house',
+ 'ninjaBear', 'bear', 'Church', 'Cathedral', 'rock']
 
 # methods = [cv2.TM_CCOEFF, cv2.TM_CCOEFF_NORMED, cv2.TM_CCORR,
 #             cv2.TM_CCORR_NORMED, cv2.TM_SQDIFF, cv2.TM_SQDIFF_NORMED]
@@ -34,6 +37,7 @@ for item in items:
             # print('TM_SQDIFF_NORMED')
             useMethod = 'TM_SQDIFF_NORMED'
         number = 2
+        lestItem = item
         # img2Name = './item/' + item + '/' + item + f"{number:02d}" + '.jpg'
         img1Name = './item/' + item + '/' + item + '1.jpg'
         img2Name = './item/' + lestItem + '/' + lestItem + str(number) + '.jpg'
@@ -46,7 +50,7 @@ for item in items:
             h, w = img2.shape
             if h == 65:
                 # print(result)
-                data = [useMethod, item, lestItem, float(result*100)]
+                data = [useMethod, item, lestItem + str(number), float(result*100)]
                 writer.writerow(data)
             else:
                 print(img2Name)
