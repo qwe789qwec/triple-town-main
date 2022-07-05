@@ -17,9 +17,10 @@ def showResult(way, torf, dframe):
     ShapiroWilkTest = scipy.stats.shapiro(dataHandle['score'])
     print('Shapiro-Wilk Test = ' + str(ShapiroWilkTest))
 
-def tTest(dframe1, dframe2, way):
-    comp1 = dframe1.loc[data['method'] == way]
-    comp2 = dframe2.loc[data['method'] == way]
+def tTest(dframe1, dframe2, way1, way2):
+    comp1 = dframe1.loc[data['method'] == way1]
+    comp2 = dframe2.loc[data['method'] == way2]
+    print(way1 + ' compare to ' + way2)
     print(scipy.stats.ttest_ind(comp1['score'], comp2['score']))
 
 methods = [cv2.TM_CCOEFF_NORMED, cv2.TM_CCORR_NORMED, cv2.TM_SQDIFF_NORMED]
@@ -82,6 +83,17 @@ fig.update_layout(
 )
 fig.show()
 
-tTest(data, wrongData, 'TM_CCOEFF_NORMED')
-tTest(data, wrongData, 'TM_CCORR_NORMED')
-tTest(data, wrongData, 'TM_SQDIFF_NORMED')
+print('diff data')
+tTest(data, wrongData, 'TM_CCOEFF_NORMED', 'TM_CCOEFF_NORMED')
+tTest(data, wrongData, 'TM_CCORR_NORMED', 'TM_CCORR_NORMED')
+tTest(data, wrongData, 'TM_SQDIFF_NORMED', 'TM_SQDIFF_NORMED')
+print('')
+print('data diff method')
+tTest(data, data, 'TM_CCOEFF_NORMED', 'TM_CCORR_NORMED')
+tTest(data, data, 'TM_CCOEFF_NORMED', 'TM_SQDIFF_NORMED')
+tTest(data, data, 'TM_CCORR_NORMED', 'TM_SQDIFF_NORMED')
+print('')
+print('wrongData diff method')
+tTest(wrongData, wrongData, 'TM_CCOEFF_NORMED', 'TM_CCORR_NORMED')
+tTest(wrongData, wrongData, 'TM_CCOEFF_NORMED', 'TM_SQDIFF_NORMED')
+tTest(wrongData, wrongData, 'TM_CCORR_NORMED', 'TM_SQDIFF_NORMED')
