@@ -72,8 +72,8 @@ fig.update_layout(
 
 
 for method in methods:
-    set1 = data.loc[(data['method'] == method) & (data['YorN'] == True)]['mean']
-    set2 = data.loc[(data['method'] == method) & (data['YorN'] == False)]['mean']
+    set1 = data.loc[(data['method'] == method) & (data['YorN'] == True)]['score']
+    set2 = data.loc[(data['method'] == method) & (data['YorN'] == False)]['score']
     print(method)
     print(scipy.stats.ttest_ind(set1, set2))
     print(shapiro(set1))

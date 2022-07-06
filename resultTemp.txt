@@ -1,0 +1,25 @@
+TM_CCOEFF_NORMED
+Ttest_indResult(statistic=93.60922756012788, pvalue=0.0)
+ShapiroResult(statistic=0.8523979187011719, pvalue=1.0771293646578698e-17)
+ShapiroResult(statistic=0.8740451335906982, pvalue=0.0)
+TM_CCORR_NORMED
+Ttest_indResult(statistic=36.818985468420706, pvalue=1.3182674870983058e-254)
+ShapiroResult(statistic=0.7684442400932312, pvalue=6.478358499196425e-22)
+ShapiroResult(statistic=0.8721065521240234, pvalue=0.0)
+TM_SQDIFF_NORMED
+Ttest_indResult(statistic=37.52546909836744, pvalue=5.198809468192212e-263)
+ShapiroResult(statistic=0.6906089782714844, pvalue=6.878876954288538e-25)
+ShapiroResult(statistic=0.872947633266449, pvalue=0.0)
+
+TM_CCOEFF_NORMED
+Ttest_indResult(statistic=34.4422726836678, pvalue=6.460204957731897e-227)
+ShapiroResult(statistic=0.934671938419342, pvalue=2.7362436968991766e-11)
+ShapiroResult(statistic=0.9845679402351379, pvalue=3.9066316029262257e-19)
+TM_CCORR_NORMED
+Ttest_indResult(statistic=24.81366702898951, pvalue=3.085844550432469e-126)
+ShapiroResult(statistic=0.6306857466697693, pvalue=8.339675711881208e-27)
+ShapiroResult(statistic=0.9380537271499634, pvalue=5.570219600024162e-36)
+TM_SQDIFF_NORMED
+Ttest_indResult(statistic=23.986692013695222, pvalue=1.2412981897471495e-118)
+ShapiroResult(statistic=0.5378095507621765, pvalue=2.4237223487740204e-29)
+ShapiroResult(statistic=0.9070281982421875, pvalue=5.842013297770162e-42)
