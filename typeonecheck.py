@@ -4,7 +4,7 @@ import csv
 import os
 
 csvName = 'compareTypeOne.csv'
-
+templateNumber = 5
 header = ['method', 'item', 'compareItem', 'score', 'trueScore', 'compareResult']
 f = open(csvName, 'w', encoding='UTF8', newline='')
 writer = csv.writer(f)
@@ -27,7 +27,7 @@ methods = [cv2.TM_CCOEFF_NORMED, cv2.TM_CCORR_NORMED, cv2.TM_SQDIFF_NORMED]
 # methods = [cv2.TM_CCOEFF, cv2.TM_CCORR, cv2.TM_SQDIFF]
 
 for method in methods:
-    number = 2
+    number = 1
     for compare in items:
         comparePath = './item/' + compare + '/' + compare + str(number) + '.jpg'
         compare_exists = os.path.exists(comparePath)
@@ -40,7 +40,7 @@ for method in methods:
             trueScore = 0
 
             for tamplate in items:
-                tamplatePath = './item/' + tamplate + '/' + tamplate + '1.jpg'
+                tamplatePath = './item/' + tamplate + '/' + tamplate + str(templateNumber) + '.jpg'
                 tamplateImg = cv2.imread(tamplatePath,0)
                 compareImg = cv2.imread(comparePath,0)
                 result = cv2.matchTemplate(tamplateImg, compareImg, method)
@@ -83,7 +83,8 @@ for method in methods:
             comparePath = './item/' + compare + '/' + compare + str(number) + '.jpg'
             compare_exists = os.path.exists(comparePath)
 
-        number = 2
+        number = 1
 
 f.close()
+print(tamplatePath)
 # print(type(result[0][0]))
